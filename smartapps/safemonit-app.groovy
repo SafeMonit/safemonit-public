@@ -120,10 +120,8 @@ def prepareResponseData(data) {
 def renderLocationState() {
   log.debug("Notify full state")
   def data = [
-    location_state: [
-      location: renderLocation(),
-      devices: renderDevices()
-    ]
+    location: renderLocation(),
+    devices: renderDevices()
   ]
   prepareResponseData(data)
   return data
