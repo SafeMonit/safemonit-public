@@ -32,6 +32,7 @@ preferences {
 
 mappings {
   path("/location_state") { action: [GET: "renderLocationState"] }
+  path("/command") { action: [POST: "issueCommand"] }
 }
 
 def installed() {
@@ -99,12 +100,23 @@ def notifySafeMonit(data, isFull) {
     ]
   ]
   httpPostJson(params) { resp ->
-    log.debug(resp.data)
-    if (!isFull) {
-      log.debug("About to notify full state")
-      notifyFullLocationState()
+    //log.debug(resp.data)
+  }
+}
+
+def issueCommand() {
+  log.debug("Received request to issue command.")
+  //log.debug(request.JSON)
+  def context = request.JSON?.context
+  def command = request.JSON?.command
+  def value = request.JSON?.value
+  if (context == "location") {
+    if (command == "setMode") {
+      location.setMode(value)
+      log.debug("Setting location mode to ${value}")
     }
   }
+  render data: new groovy.json.JsonOutput().toJson([success: true])
 }
 
 /// HELPERS
@@ -132,6 +144,9 @@ def renderLocation() {
     latitude: location.latitude,
     longitude: location.longitude,
     mode: location.mode,
+    modes: location.modes.collectEntries { e-> 
+      e.name
+    },
     name: location.name,
     temperature_scale: location.temperatureScale,
     zip_code: location.zipCode,
