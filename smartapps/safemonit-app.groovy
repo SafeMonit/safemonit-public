@@ -115,11 +115,25 @@ def issueCommand() {
       location.setMode(value)
       log.debug("Setting location mode to ${value}")
     }
+  } else if (context == "device") {
+    def did = request.JSON?.device_id
+    def device = findDeviceById(did)
+    device."$command"()
+    log.debug("Running device ${did} command '${command}'")
   }
   render data: new groovy.json.JsonOutput().toJson([success: true])
 }
 
 /// HELPERS
+
+def findDeviceById(id) {
+  def device = deviceList.find { it.id == id }
+  if (device) return device
+  device = sensorList.find { it.id == id }
+  if (device) return device
+  device = switchList.find { it.id == id }
+  return device
+}
 
 def prepareResponseData(data) {
   data['location_api_key'] = locationAPIKey
@@ -131,20 +145,30 @@ def prepareResponseData(data) {
 
 def renderLocationState() {
   log.debug("Notify full state")
-  def data = [
-    location: renderLocation(),
-    devices: renderDevices()
+  def res = [
+    success: true
   ]
-  prepareResponseData(data)
-  return data
+  def status = 200
+  try {
+    res['location'] = renderLocation()
+    res['devices'] = renderDevices()
+  } catch (e) {
+    res['success'] = false
+    res['error'] = "An error occurred building location state."
+    status = 500
+    log.error("Exception caught", e)
+  }
+  prepareResponseData(res)
+  render data: new groovy.json.JsonOutput().toJson(res), status: status
 }
 
 def renderLocation() {
+  log.debug "Rendering location"
   [
     latitude: location.latitude,
     longitude: location.longitude,
     mode: location.mode,
-    modes: location.modes.collectEntries { e-> 
+    modes: location.modes.collect { e-> 
       e.name
     },
     name: location.name,
@@ -164,6 +188,7 @@ def renderDevices() {
 }
 
 def renderDevice(dev) {
+  log.debug "Rendering device ${dev.id}"
   try {
     [
       id: dev.id,
@@ -178,8 +203,7 @@ def renderDevice(dev) {
       attributes: renderDeviceAttributes(dev)
     ]
   } catch (err) {
-    log.debug("Could not parse device ${dev.id}");
-    log.debug(err.getMessage());
+    log.error("Could not parse device ${dev.id}", err);
     return null
   }
 }
