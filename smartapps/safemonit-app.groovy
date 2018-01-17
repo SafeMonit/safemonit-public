@@ -114,6 +114,8 @@ def issueCommand() {
     if (command == "setMode") {
       location.setMode(value)
       log.debug("Setting location mode to ${value}")
+    } else if (command == "sendPush") {
+      sendPush(value)
     }
   } else if (context == "device") {
     def did = request.JSON?.device_id
