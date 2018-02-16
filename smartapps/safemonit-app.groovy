@@ -1,7 +1,7 @@
 /**
  *  SafeMonit App
  *
- *  Copyright 2017 Alan Graham
+ *  Copyright 2017 SafeMonit
  *
  */
 
@@ -94,7 +94,7 @@ def locationChangeHandler(ev) {
 def notifySafeMonit(data, isFull) {
   prepareResponseData(data)
   def params = [
-    uri: "http://dishfave.com:8080/api/location_state/report",
+    uri: "http://api.safemonit.com:80/v1/location_state/report",
     body: [
       event: data
     ]
