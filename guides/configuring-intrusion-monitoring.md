@@ -12,12 +12,12 @@ To make the Intrusion Monitoring feature work, we need a few more modes. Luckily
 
 2. From there, click __My Locations__ in the top header, and then click the name of the Location you want to integrate with SafeMonit.
 
-3. Next, on this Location Details page, under the __Modes__ section, click the __create new__ link. Using this form, add __Police Alarm__ and __Police Alarm Pending__ modes.
+3. Next, on this Location Details page, under the __Modes__ section, click the __create new__ link. Using this form, add __Intrusion Alarm__ and __Intrusion Alarm Pending__ modes.
 
-4. Make sure you have the following modes now: __Home__, __Away__, __Night__, __Police Alarm__, and __Police Alarm Pending__. If not, add any that are missing. That's it! Now you're all set to enable Intrusion Monitoring.
+4. Make sure you have the following modes now: __Home__, __Away__, __Night__, __Intrusion Alarm__, and __Intrusion Alarm Pending__. If not, add any that are missing. That's it! Now you're all set to enable Intrusion Monitoring.
 
 ### Why do I need these modes?
 
-**Police Alarm Pending** mode is entered if your location is set to __Away__ or __Night__ and one of the configured sensors is triggered. It gives you approximately 20 seconds to switch to the __Home__ mode before the system switches to **Police Alarm** mode. Once this mode is entered. Any sirens are activated, and if SafeMonit Monitoring is enabled, a new __Incident__ is created.
+**Intrusion Alarm Pending** mode is entered if your location is set to __Away__ or __Night__ and one of the configured sensors is triggered. It gives you approximately 20 seconds to switch to the __Home__ mode before the system switches to **Intrusion Alarm** mode. Once this mode is entered. Any sirens are activated, and if SafeMonit Monitoring is enabled, a new __Incident__ is created.
 
 
