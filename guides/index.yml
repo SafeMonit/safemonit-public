@@ -3,4 +3,6 @@
 - title: How To Install SafeMonit Smart App
   slug: install-safemonit-smartthings-smartapp
 - title: How To Configure SafeMonit Intrusion Monitoring
-  slug: configuring-intrusion-monitoring
+  slug: configure-intrusion-monitoring
+- title: How To Configure Weather Tile
+  slug: configure-weather-tile
