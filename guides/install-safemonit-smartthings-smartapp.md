@@ -4,7 +4,7 @@ In order to integrate your SmartThings system with SafeMonit, you will need to f
 
 ## Add SafeMonit To Your Available SmartApps
 
-1. First, you will want to navigate your web browser to <https://graph.api.smartthings.com>.
+1. First, navigate your web browser to <https://graph.api.smartthings.com> and sign in with your SmartThings login and password.
 
 2. From there, click __My Locations__ in the top header, and then click the name of the Location you want to integrate with SafeMonit.
 
@@ -12,9 +12,9 @@ In order to integrate your SmartThings system with SafeMonit, you will need to f
 
 4. Choose the __From Code__ tab and copy and paste the code from <https://raw.githubusercontent.com/SafeMonit/safemonit-public/master/smartapps/safemonit-app.groovy>. Then click the __Create__ button at the bottom.
 
-5. Select the option to __Publish__ the SmartApp.
+5. Click the __Publish__ button in the toolbar and select the __For Me__ option.
 
-6. In the SmartApp settings page, select the option to __Enable OAuth2__. Now you are ready to enable the smart app from the official SmartThings app.
+6. Click the __App Settings__ button in the toolbar. On this settings page, expand the __OAuth__ panel. Click the __Enable OAuth in Smart App__ button. Then click the __Update__ button at the bottom of the page. Now you are ready to enable the smart app from the official SmartThings app.
 
 
 ## Configure SafeMonit SmartApp

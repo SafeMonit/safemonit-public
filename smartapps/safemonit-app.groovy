@@ -8,7 +8,7 @@
 definition(
     name: "SafeMonit App",
     namespace: "safemonit",
-    author: "Alan Graham",
+    author: "SafeMonit",
     description: "API for SafeMonit with complete set of devices",
     category: "SmartThings Labs",
     iconUrl:   "https://raw.githubusercontent.com/pdlove/homebridge-smartthings/master/smartapps/JSON%401.png",
