@@ -94,7 +94,7 @@ def locationChangeHandler(ev) {
 def notifySafeMonit(data, isFull) {
   prepareResponseData(data)
   def params = [
-    uri: "http://api.safemonit.com:80/v1/location_state/report",
+    uri: "https://api.safemonit.com/v1/location_state/report",
     body: [
       event: data
     ]
