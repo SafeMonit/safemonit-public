@@ -49,7 +49,8 @@ def initialize() {
     createAccessToken()
   }
   registerDevices()
-  subscribe(location, "mode", locationChangeHandler)
+  subscribe(location, "mode", locationModeChangeHandler)
+  subscribe(location, "routineExecuted", locationRoutineExecutedHandler)
 }
 
 def registerDevices() {
@@ -83,7 +84,7 @@ def deviceChangeHandler(ev) {
   notifySafeMonit(data, false);
 }
 
-def locationChangeHandler(ev) {
+def locationModeChangeHandler(ev) {
   def data = [
     event_type: "mode.changed",
     value: ev.value
@@ -91,10 +92,24 @@ def locationChangeHandler(ev) {
   notifySafeMonit(data, false);
 }
 
+def locationRoutineExecutedHandler(ev) {
+  def data = [
+    event_type: "routine.executed",
+    smartapp_id: ev.value,
+    name: ev.displayName,
+    description: ev.descriptionText
+  ]
+  notifySafeMonit(data, false);
+}
+
 def notifySafeMonit(data, isFull) {
   prepareResponseData(data)
+  def uri = "https://api.safemonit.com/v1/location_state/report"
+  if (data["test_api_mode"] == true) {
+    uri = "http://api.safemonit.com:4019/v1/location_state/report"
+  }
   def params = [
-    uri: "https://api.safemonit.com/v1/location_state/report",
+    uri: uri,
     body: [
       event: data
     ]
@@ -116,6 +131,8 @@ def issueCommand() {
       log.debug("Setting location mode to ${value}")
     } else if (command == "sendPush") {
       sendPush(value)
+    } else if (command == "executeRoutine") {
+      location.helloHome?.execute(value)
     }
   } else if (context == "device") {
     def did = request.JSON?.device_id
@@ -138,7 +155,12 @@ def findDeviceById(id) {
 }
 
 def prepareResponseData(data) {
-  data['location_api_key'] = locationAPIKey
+  if (locationAPIKey != null && locationAPIKey[0] == "!") {
+    data['location_api_key'] = locationAPIKey.substring(1)
+    data['test_api_mode'] = true
+  } else {
+    data['location_api_key'] = locationAPIKey
+  }
   data['app_url'] = apiServerUrl("/api/smartapps/installations/${app.id}")
   data['app_access_token'] = state.accessToken
   data['app_id'] = app.id
@@ -173,11 +195,12 @@ def renderLocation() {
     modes: location.modes.collect { e-> 
       e.name
     },
+    routines: location.helloHome?.getPhrases()*.label,
     name: location.name,
     temperature_scale: location.temperatureScale,
     zip_code: location.zipCode,
     hub_ip: location.hubs[0].localIP,
-    smartapp_version: '1.0.0'
+    smartapp_version: '1.1.0'
   ]
 }
 
