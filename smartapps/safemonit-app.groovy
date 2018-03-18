@@ -32,6 +32,7 @@ preferences {
 
 mappings {
   path("/location_state") { action: [GET: "renderLocationState"] }
+  path("/location_events") { action: [GET: "renderEvents"] }
   path("/command") { action: [POST: "issueCommand"] }
 }
 
@@ -79,7 +80,7 @@ def deviceChangeHandler(ev) {
     device_id: ev.deviceId,
     attribute: ev.name,
     value: ev.value,
-    date: ev.date,
+    time: ev.isoDate,
   ]
   notifySafeMonit(data, false);
 }
@@ -200,7 +201,7 @@ def renderLocation() {
     temperature_scale: location.temperatureScale,
     zip_code: location.zipCode,
     hub_ip: location.hubs[0].localIP,
-    smartapp_version: '1.1.0'
+    smartapp_version: '1.2.0'
   ]
 }
 
@@ -222,7 +223,7 @@ def renderDevice(dev) {
       status: dev.status,
       manufacturer_name: dev.getManufacturerName(),
       model_name: dev.getModelName(),
-      last_time: dev.getLastActivity(),
+      //last_time: dev.getLastActivity(),
       capabilities: renderDeviceCapabilities(dev),
       commands: renderDeviceCommands(dev),
       attributes: renderDeviceAttributes(dev)
@@ -252,12 +253,60 @@ def renderDeviceCommands(dev) {
 def renderDeviceAttributes(dev) {
   //log.debug "Rendering device attributes"
   dev.supportedAttributes.collectEntries { e->
+    def ret = null
     def val = null
     try {
       val = dev.currentValue(e.name)
+      if (val != null) {
+        def s = dev.currentState(e.name)
+        ret = [
+          value: val
+        ]
+        if (s.unit != null) { ret['unit'] = s.unit }
+        if (s.isoDate != null) { ret['time'] = s.isoDate }
+      }
     } catch (ex) { }
     [
-      (e.name): val
+      (e.name): ret
     ]
   }
+}
+
+def renderEvents() {
+  log.debug("Render events")
+  def res = [
+    success: true
+  ]
+  def status = 200
+  try {
+    // find events for device
+    def data = []
+    def did = request.JSON?.device_id
+    def device = findDeviceById(did)
+    def evs = device.eventsSince(new Date() - 1, [max: 100])
+    evs.each { data << renderEvent(it) }
+    data = data.findAll { it != null }
+    res['events'] = data
+  } catch (e) {
+    res['success'] = false
+    res['error'] = "An error occurred building events."
+    status = 500
+    log.error("Exception caught", e)
+  }
+  //prepareResponseData(res)
+  render data: new groovy.json.JsonOutput().toJson(res), status: status
+
+}
+
+def renderEvent(ev) {
+  def ret = [
+    time: ev.isoDate,
+    description: ev.descriptionText,
+    displayName: ev.displayName,
+    value: ev.value,
+    device_id: ev.deviceId,
+    name: ev.name,
+    unit: ev.unit
+  ]
+  return ret
 }
