@@ -10,7 +10,7 @@ In order to integrate your SmartThings system with SafeMonit, you will need to f
 
 3. Click __My SmartApps__ in the top header and click the green __+ New SmartApp__ button.
 
-4. Choose the __From Code__ tab and copy and paste the code from <https://raw.githubusercontent.com/SafeMonit/safemonit-public/master/smartapps/safemonit-app.groovy>. Then click the __Create__ button at the bottom.
+4. Choose the __From Code__ tab and copy and paste the code from <https://safemonit.com/download/smartapp>. Then click the __Create__ button at the bottom.
 
 5. Click the __Publish__ button in the toolbar and select the __For Me__ option.
 
