@@ -33,4 +33,4 @@ That's it, you should now be able to configure panels and automation!
 
 ## Need Help?
 
-If you have any issues during this setup, please contact us at [contact@safemonit.com](mailto:contact@safemonit.com).
+If you have any issues during this setup, please contact us at [support@safemonit.com](mailto:support@safemonit.com).
