@@ -81,6 +81,7 @@ def deviceChangeHandler(ev) {
     attribute: ev.name,
     value: ev.value,
     time: ev.isoDate,
+    change: ev.isStateChange(),
   ]
   notifySafeMonit(data, false);
 }
@@ -201,7 +202,7 @@ def renderLocation() {
     temperature_scale: location.temperatureScale,
     zip_code: location.zipCode,
     hub_ip: location.hubs[0].localIP,
-    smartapp_version: '1.2.0'
+    smartapp_version: '1.2.2'
   ]
 }
 
@@ -306,7 +307,8 @@ def renderEvent(ev) {
     value: ev.value,
     device_id: ev.deviceId,
     name: ev.name,
-    unit: ev.unit
+    unit: ev.unit,
+    change: ev.isStateChange(),
   ]
   return ret
 }
