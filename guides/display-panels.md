@@ -1,4 +1,3 @@
-# SafeMonit Display Panels
 
 The display panels are your primary interface for managing your devices and viewing the status of your home or business. It is designed to be displayed on a tablet, mobile phone, or any touch-screen device.
 

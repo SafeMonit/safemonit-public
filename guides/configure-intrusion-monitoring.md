@@ -1,4 +1,3 @@
-# How To Configure SafeMonit Intrusion Monitoring
 
 One of the best features of SafeMonit is it's built in __Intrusion Monitoring__ system. This works like to your standard alarm systems that you're familiar with, but using your SmartThings components. Setup is easy, just follow the steps below
 

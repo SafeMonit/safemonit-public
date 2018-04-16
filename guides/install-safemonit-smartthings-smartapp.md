@@ -1,10 +1,9 @@
-# How To Install SafeMonit SmartApp
 
 In order to integrate your SmartThings system with SafeMonit, you will need to first install the SmartApp. If you haven't installed a custom SmartApp before, it's okay, we will take you step by step.
 
 ## Add SafeMonit To Your Available SmartApps
 
-1. First, navigate your web browser to <https://ide.smartthings.com> and sign in with your SmartThings login and password.
+1. First, navigate your web browser to <https://graph.api.smartthings.com> and sign in with your SmartThings login and password.
 
 2. From there, click __My Locations__ in the top header, and then click the name of the Location you want to integrate with SafeMonit.
 
@@ -36,7 +35,7 @@ That's it, you should now be able to configure panels and automation!
 
 Periodically, changes may be pushed to the SmartApp to support new SafeMonit features. You will usually be notified with an alert in the location overview page that a new version is available.
 
-1. First, navigate your web browser to <https://ide.smartthings.com> and sign in with your SmartThings login and password.
+1. First, navigate your web browser to <https://graph.api.smartthings.com> and sign in with your SmartThings login and password.
 
 2. From there, click __My Locations__ in the top header, and then click the name of the Location you want to integrate with SafeMonit.
 

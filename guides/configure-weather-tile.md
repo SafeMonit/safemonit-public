@@ -1,4 +1,3 @@
-# How To Configure Weather Tile
 
 One of the most useful additions to the SafeMonit panels is the ability to show your local weather. This is best accommodated by using a virtual device setup within your SmartThings hub. If you don't already have it setup, this guide will show you how to do so.
 
