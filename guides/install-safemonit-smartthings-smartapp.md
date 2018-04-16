@@ -41,9 +41,11 @@ Periodically, changes may be pushed to the SmartApp to support new SafeMonit fea
 
 3. Click __My SmartApps__ in the top header and click the __safemonit : SafeMonit App__ link.
 
-4. Delete all the existing code in the editor. Then copy and paste the code from <https://safemonit.com/download/smartapp> and click the __Save__ button.
+4. Delete all the existing code in the editor. Then copy and paste the code from <https://safemonit.com/download/smartapp>.
 
-5. Click the __Publish__ button in the toolbar and select the __For Me__ option. You are now running the latest SafeMonit SmartApp version.
+5. Click the __Save Button__. Then click the __Publish__ button in the toolbar and select the __For Me__ option.
+
+You are now running the latest SafeMonit SmartApp version.
 
 ## Need Help?
 
