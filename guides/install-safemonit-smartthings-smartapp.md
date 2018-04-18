@@ -45,6 +45,8 @@ Periodically, changes may be pushed to the SmartApp to support new SafeMonit fea
 
 5. Click the __Save Button__. Then click the __Publish__ button in the toolbar and select the __For Me__ option.
 
+6. Trigger a sensor (e.g. open a monitored door) to have the new SmartApp notify SafeMonit that it has been updated.
+
 You are now running the latest SafeMonit SmartApp version.
 
 ## Need Help?
