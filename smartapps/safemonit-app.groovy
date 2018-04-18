@@ -191,7 +191,7 @@ def renderLocationState() {
 def renderLocation() {
   log.debug "Rendering location"
   [
-    id: location.id,
+    uuid: location.id,
     latitude: location.latitude,
     longitude: location.longitude,
     mode: location.mode,
@@ -201,10 +201,9 @@ def renderLocation() {
     routines: location.helloHome?.getPhrases()*.label,
     name: location.name,
     temperature_scale: location.temperatureScale,
-    time_zone: location.timeZone,
     zip_code: location.zipCode,
     hub_ip: location.hubs[0].localIP,
-    smartapp_version: '1.2.3'
+    smartapp_version: '1.2.4'
   ]
 }
 
