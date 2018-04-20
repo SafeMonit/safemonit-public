@@ -1,10 +1,10 @@
-- title: SafeMonit Guides
-  slug: intro
+- title: Getting Started With SafeMonit
+  slug: getting-started
 - title: How To Install SafeMonit Smart App
   slug: install-safemonit-smartthings-smartapp
-- title: How To Configure SafeMonit Intrusion Monitoring
-  slug: configure-intrusion-monitoring
+- title: Intrusion Monitoring
+  slug: intrusion-monitoring
+- title: Display Panels
+  slug: display-panels
 - title: How To Configure Weather Tile
   slug: configure-weather-tile
-- title: SafeMonit Display Panels
-  slug: display-panels

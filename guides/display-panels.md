@@ -5,7 +5,7 @@ The display panels are your primary interface for managing your devices and view
 
 SafeMonit panels can be displayed on an Android or iOS tablet device. You can display the panel in within the native browser, or save the application to the device home screen for quicker access. It is recommended for both tablets and mobile devices that support Chrome or Safari to save the panel to the home screen, which will launch the panel as if it were a native app.
 
-## Keeping the Tablet Always On (Android)
+## Keeping the Tablet Always On - Android
 
 For Android devices, you can alter the device settings to prevent the tablet from going to sleep. 
 
