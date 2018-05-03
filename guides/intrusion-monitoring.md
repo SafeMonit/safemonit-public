@@ -24,6 +24,8 @@ To make the Intrusion Monitoring feature work, we need a few more modes. Luckily
     | __Night__ |
     | __Intrusion Alarm__ |
     | __Intrusion Alarm Pending__ |
+    | __Open__ (if business) |
+    | __Closed__ (if business) |
 
 4. That's it! Now you're all set to enable Intrusion Monitoring.
 
