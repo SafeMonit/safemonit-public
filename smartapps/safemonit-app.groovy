@@ -52,6 +52,12 @@ def initialize() {
   registerDevices()
   subscribe(location, "mode", locationModeChangeHandler)
   subscribe(location, "routineExecuted", locationRoutineExecutedHandler)
+  // send initial data
+  def data = [
+    event_type: "mode.changed",
+    value: location.mode
+  ]
+  notifySafeMonit(data, true);
 }
 
 def registerDevices() {
