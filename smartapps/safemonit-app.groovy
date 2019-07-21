@@ -209,7 +209,7 @@ def renderLocation() {
     temperature_scale: location.temperatureScale,
     zip_code: location.zipCode,
     hub_ip: location.hubs[0].localIP,
-    smartapp_version: '1.2.5'
+    smartapp_version: '1.2.4'
   ]
 }
 
