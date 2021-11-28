@@ -21,6 +21,7 @@ preferences {
     section("Select all devices to monitor below.") {
       input "sensorList", "capability.sensor", title: "Sensors", multiple: true, required: false
       input "switchList", "capability.switch", title: "Switches", multiple: true, required: false
+      input "presenceList", "capability.presence", title: "Presence", multiple: true, required: false
       input "deviceList", "capability.refresh", title: "Any Others", multiple: true, required: false
     }
 
@@ -66,6 +67,7 @@ def registerDevices() {
   state.devchanges = []
   registerChangeHandler(deviceList)
   registerChangeHandler(sensorList)
+  registerChangeHandler(presenceList)
   registerChangeHandler(switchList)
 }
 
@@ -158,6 +160,8 @@ def findDeviceById(id) {
   if (device) return device
   device = sensorList.find { it.id == id }
   if (device) return device
+  device = presenceList.find { it.id == id }
+  if (device) return device
   device = switchList.find { it.id == id }
   return device
 }
@@ -209,7 +213,7 @@ def renderLocation() {
     temperature_scale: location.temperatureScale,
     zip_code: location.zipCode,
     hub_ip: location.hubs[0].localIP,
-    smartapp_version: '1.2.4'
+    smartapp_version: '1.2.5'
   ]
 }
 
@@ -217,6 +221,7 @@ def renderDevices() {
   def data = []
   sensorList.each { data << renderDevice(it) }
   switchList.each { data << renderDevice(it) }
+  presenceList.each { data << renderDevice(it) }
   deviceList.each { data << renderDevice(it) }
   return data.findAll { it != null }
 }
