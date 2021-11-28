@@ -21,7 +21,7 @@ preferences {
     section("Select all devices to monitor below.") {
       input "sensorList", "capability.sensor", title: "Sensors", multiple: true, required: false
       input "switchList", "capability.switch", title: "Switches", multiple: true, required: false
-      input "presenceList", "capability.presence", title: "Presence", multiple: true, required: false
+      input "presenceList", "capability.presenceSensor", title: "Presence", multiple: true, required: false
       input "deviceList", "capability.refresh", title: "Any Others", multiple: true, required: false
     }
 
@@ -213,7 +213,7 @@ def renderLocation() {
     temperature_scale: location.temperatureScale,
     zip_code: location.zipCode,
     hub_ip: location.hubs[0].localIP,
-    smartapp_version: '1.2.5'
+    smartapp_version: '1.2.4'
   ]
 }
 
